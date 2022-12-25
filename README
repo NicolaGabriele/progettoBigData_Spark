@@ -3,11 +3,29 @@ Idee per le madonna di query:
 1) Wordcount recensioni negative
 2) Wordcount recensioni positive
 idea: stabilire che cosa influenza maggiormente le recensioni di un visitatore
+(eliminare le "stopwords")
 
-3) Recensioni del visitatore sulla base dell'età
-idea: stabilire cosa viene ritenuto più importante dai visitatori in base all'età
+3) Dato il nome di una nazione trovare gli hotel di quella nazione
+(Già fatta, va solo implementato il meccanismo di trasferimento al frontend)
 
-4) Votazione del visitatore sulla base dell'età
-idea: stabilire quali sono gli hotel più adatti a diverse fasce di età (es: per ragazzi, per adulti, per anziani)
 
-5) Dato il nome di una nazione trovare gli hotel di quella nazione (Già fatta, va solo implementato il meccanismo di trasferimento al frontend)
+DATASET:
+Numero di righe: 515738
+Le caratteristiche in nostro possesso:
+0,Hotel_Address
+1,Additional_Number_of_Scoring
+2,Review_Date
+3,Average_Score
+4,Hotel_Name
+5,Reviewer_Nationality
+6,Negative_Review
+7,Review_Total_Negative_Word_Counts
+8,Total_Number_of_Reviews
+9,Positive_Review
+10,Review_Total_Positive_Word_Counts
+11,Total_Number_of_Reviews_Reviewer_Has_Given
+12,Reviewer_Score
+13,Tags
+14,days_since_review
+15,lat
+16,lng
