@@ -9,3 +9,5 @@ idea: stabilire cosa viene ritenuto più importante dai visitatori in base all'e
 
 4) Votazione del visitatore sulla base dell'età
 idea: stabilire quali sono gli hotel più adatti a diverse fasce di età (es: per ragazzi, per adulti, per anziani)
+
+5) Dato il nome di una nazione trovare gli hotel di quella nazione (Già fatta, va solo implementato il meccanismo di trasferimento al frontend)
