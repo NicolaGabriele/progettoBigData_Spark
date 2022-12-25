@@ -7,6 +7,7 @@ import ujson.Obj
   restituisce un json che contiene: data una nazione tutte le coppie (Nome hotel, punteggio medio)
   degli hotel di quella nazione.
   L'idea è quella di mostrare il tutto su un istogramma nel frontend
+  TODO: implementare il meccanismo di trasferimento del json al front end
  */
 object CoppieHotelPunteggioMedioPerNazione extends Query{
 
