@@ -30,7 +30,7 @@ object WordCountNegative extends Query {
 
     result.saveAsTextFile(".\\results\\result")
 
-    //result.sortByKey(false).take(100).foreach(println) (Dave questa è solo di debug o va lasciata?)
+    //result.sortByKey(false).take(100).foreach(println) (Dave questa è solo di debug o va lasciata?) fai tu
 
 
   }
