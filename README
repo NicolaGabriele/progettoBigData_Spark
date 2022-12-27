@@ -5,8 +5,17 @@ Idee per le madonna di query:
 idea: stabilire che cosa influenza maggiormente le recensioni di un visitatore
 ( TODO eliminare le "stopwords")
 
-3) Dato il nome di una nazione trovare gli hotel di quella nazione
+3) Dato il nome di una nazione trovare gli hotel di quella nazione //DO
 (Già fatta, va solo implementato il meccanismo di trasferimento al frontend)
+
+4) Filtrare gli hotel in base all'Average_Score creando così una sorta di classifica //TODO
+
+5) Contare numero di recensioni positive per ogni hotel e restituirne la coppia hotel-numero}
+                                                                                            }<- lato front-end si potrebbe implementare una sorta di like/dislike youtube style
+6) Contare numero di recensioni negative per ogni hotel e restituirne la coppia hotel-numero}
+
+
+
 
 
 DATASET:
