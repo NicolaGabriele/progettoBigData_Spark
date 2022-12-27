@@ -1,5 +1,5 @@
 
 abstract class Query {
 
-  def compute(arguments: Any): ujson.Obj
+  def compute(arguments: Any): Unit
 }

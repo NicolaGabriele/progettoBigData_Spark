@@ -1,14 +1,12 @@
 import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
-import ujson.Obj
 
 object WordCountNegative extends Query {
 
   /*
     autore: Dave
-    la classe implementa la query che restituisce le parole più presenti nelle recensioni negative in formato json.
-    il json va inviato al front-end per la visualizzazione grafica
+    la classe implementa la query che restituisce le parole più presenti nelle recensioni negative.
    */
 
   def main(args: Array[String]): Unit = {
@@ -16,26 +14,25 @@ object WordCountNegative extends Query {
     println(json)
   }
 
-  override def compute(arguments: Any): Obj = {
-    val spark = SparkSession.builder
+  override def compute(arguments: Any): Unit = {
+    val spark = SparkSession.builder()
       .appName("Simple Application")
       .master("local[*]")
       .getOrCreate()
 
     val context: SparkContext = spark.sparkContext
 
-    val file = context.textFile("Hotel_Reviews.csv")
+    //ATTENZIONE!! il path del file va sostituito con il vostro
+    // absolute path del datatset (Serve per quello assoluto per le api rest)
+    val file = context.textFile("C:\\Users\\Nicola\\progettoBigData\\proveVarieSpark\\Hotel_Reviews.csv")
 
     val result = wordCount(file)
 
-    result.sortByKey(false).take(100).foreach(println)
+    result.saveAsTextFile(".\\results\\result")
 
-    var json = ujson.Obj(
-      "values" -> ujson.Arr()
-    )
+    //result.sortByKey(false).take(100).foreach(println) (Dave questa è solo di debug o va lasciata?)
 
-    //result.collect().foreach(item => json("values").arr.append(ujson.Obj("counter" -> item._1, "word" -> item._2)))
-    json
+
   }
 
   def wordCount(file: RDD[String]) = {

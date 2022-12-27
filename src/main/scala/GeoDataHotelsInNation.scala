@@ -1,12 +1,11 @@
 import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
-import ujson.Obj
+
 
 /*
   autore: Nicola
-  la classe implementa la query che data una nazione restituisce le coordinate di tutti gli hotel della nazione in formato json.
-  il json va inviato al front-end per la visualizzazione su mappa
+  la classe implementa la query che data una nazione restituisce le coordinate di tutti gli hotel della nazione
  */
 object GeoDataHotelsInNation extends Query {
 
@@ -15,7 +14,7 @@ object GeoDataHotelsInNation extends Query {
     println(json)
   }
 
-  override def compute(arguments: Any): Obj = {
+  override def compute(arguments: Any): Unit = {
     val converted: Array[String] = arguments.asInstanceOf[Array[String]]
     println(converted)
     val spark: SparkSession = SparkSession.builder
@@ -24,15 +23,13 @@ object GeoDataHotelsInNation extends Query {
       .getOrCreate()
     val context: SparkContext = spark.sparkContext
 
-    val file = context.textFile("Hotel_Reviews.csv")
+    //ATTENZIONE!! il path del file va sostituito con il vostro
+    // absolute path del datatset (Serve per quello assoluto per le api rest)
+    val file = context.textFile("C:\\Users\\Nicola\\progettoBigData\\proveVarieSpark\\Hotel_Reviews.csv")
 
     val result = getHotelsInNation(converted(0),file)
 
-    var json = ujson.Obj(
-      "values"->ujson.Arr()
-    )
-    result.collect().foreach(item => json("values").arr.append(ujson.Obj("latitudine"->item._1,"longitudine"->item._2)))
-    json
+    result.saveAsTextFile(".\\results\\result")
   }
 
   def getHotelsInNation(nation:String, file:RDD[String]) ={

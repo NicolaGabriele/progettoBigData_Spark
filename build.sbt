@@ -15,5 +15,4 @@ libraryDependencies ++= Seq(
   "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
   "org.apache.logging.log4j" % "log4j-core" % "2.13.0",
   "com.typesafe" % "config" % "1.4.0",
-  "com.fasterxml.jackson.core" % "jackson-databind" % "2.4.0",
-  "com.lihaoyi" %% "upickle" % "0.9.5")
+  "com.fasterxml.jackson.core" % "jackson-databind" % "2.4.0")
