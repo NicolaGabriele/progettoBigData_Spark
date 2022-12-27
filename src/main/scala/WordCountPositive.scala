@@ -43,7 +43,7 @@ object WordCountPositive extends Query {
     file.map(items => {
       items.split(",")(9)
     }) //prendo la colonna "Positive_Reviews"
-      .filter(items => (!items.equals("No Positive") || !items.equals(""))) //non devo considerare tutte quelle recensioni "No Negative" o vuote
+      .filter(items => (!items.equals("No Positive") || !items.equals(""))) //non devo considerare tutte quelle recensioni "No Positive" o vuote
       .map(items => items.toLowerCase())
       .flatMap(items => items.split(" "))
       .map(word => (word, 1))
