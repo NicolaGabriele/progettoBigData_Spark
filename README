@@ -3,7 +3,7 @@ Idee per le madonna di query:
 1) Wordcount recensioni negative
 2) Wordcount recensioni positive
 idea: stabilire che cosa influenza maggiormente le recensioni di un visitatore
-(eliminare le "stopwords")
+( TODO eliminare le "stopwords")
 
 3) Dato il nome di una nazione trovare gli hotel di quella nazione
 (Già fatta, va solo implementato il meccanismo di trasferimento al frontend)
