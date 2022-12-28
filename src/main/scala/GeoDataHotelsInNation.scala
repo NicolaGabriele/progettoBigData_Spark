@@ -2,6 +2,8 @@ import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
 
+import java.io.File
+
 
 /*
   autore: Nicola
@@ -10,8 +12,7 @@ import org.apache.spark.sql.SparkSession
 object GeoDataHotelsInNation extends Query {
 
   def main(args: Array[String]): Unit ={
-    val json = compute(args)
-    println(json)
+    compute(args)
   }
 
   override def compute(arguments: Any): Unit = {
@@ -25,11 +26,11 @@ object GeoDataHotelsInNation extends Query {
 
     //ATTENZIONE!! il path del file va sostituito con il vostro
     // absolute path del datatset (Serve per quello assoluto per le api rest)
-    val file = context.textFile("C:\\Users\\Nicola\\progettoBigData\\proveVarieSpark\\Hotel_Reviews.csv")
+    val file = context.textFile("C:\\Users\\Nicola\\progettoBigData\\progettoBigData\\Hotel_Reviews.csv")
 
     val result = getHotelsInNation(converted(0),file)
 
-    result.saveAsTextFile(".\\results\\result")
+    result.saveAsTextFile("C:\\Users\\Nicola\\progettoBigData\\progettoBigData\\results\\result")
   }
 
   def getHotelsInNation(nation:String, file:RDD[String]) ={

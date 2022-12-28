@@ -23,14 +23,14 @@ object CoppieHotelPunteggioMedioPerNazione extends Query{
 
     //ATTENZIONE!! il path del file va sostituito con il vostro
     // absolute path del datatset (Serve per quello assoluto per le api rest)
-    val file = context.textFile("C:\\Users\\Nicola\\progettoBigData\\proveVarieSpark\\Hotel_Reviews.csv")
+    val file = context.textFile("C:\\Users\\Nicola\\progettoBigData\\progettoBigData\\Hotel_Reviews.csv")
 
     val filtratiPerNazione = file.filter(item => {
       val tokens: Array[String] = item.split(",")(0).split(" ")
       tokens(tokens.length-1).equals(cast(0))
     })
     val coppie_Hotel_Punteggio = filtratiPerNazione.map(item => (item.split(",")(4), item.split(",")(3)))
-    coppie_Hotel_Punteggio.saveAsTextFile(".\\results\\result")
+    coppie_Hotel_Punteggio.distinct().saveAsTextFile("C:\\Users\\Nicola\\progettoBigData\\progettoBigData\\results\\result")
 
   }
 

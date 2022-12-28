@@ -10,8 +10,7 @@ object WordCountPositive extends Query {
     */
 
   def main(args: Array[String]): Unit = {
-    val json = compute(args)
-    println(json)
+    compute(args)
   }
 
   override def compute(arguments: Any): Unit = {
@@ -24,11 +23,11 @@ object WordCountPositive extends Query {
 
     //ATTENZIONE!! il path del file va sostituito con il vostro
     // absolute path del datatset (Serve per quello assoluto per le api rest)
-    val file = context.textFile("C:\\Users\\Nicola\\progettoBigData\\proveVarieSpark\\Hotel_Reviews.csv")
+    val file = context.textFile("C:\\Users\\Nicola\\progettoBigData\\progettoBigData\\Hotel_Reviews.csv")
 
     val result = wordCount(file)
 
-    result.saveAsTextFile(".\\results\\result")
+    result.saveAsTextFile("C:\\Users\\Nicola\\progettoBigData\\progettoBigData\\results\\result")
     //result.sortByKey(false).take(100).foreach(println) (Dave questa è solo di debug o va lasciata?)
 
   }
