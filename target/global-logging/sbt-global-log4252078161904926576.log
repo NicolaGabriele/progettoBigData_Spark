@@ -1,0 +1,122 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.8.0 (Oracle Corporation Java 1.8.0_341)
+[debug]       Load.loadUnit: plugins took 152.0244ms
+[debug]       Load.loadUnit: defsScala took 0.3991ms
+[debug] [Loading] Scanning directory C:\Users\Nicola\.sbt\1.0\plugins
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\Nicola\.sbt\1.0\plugins, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 31.8271 ms
+[debug]           Load.resolveProject(global-plugins) took 48.9019ms
+[debug]         Load.loadTransitive: finalizeProject(Project(id global-plugins, base: C:\Users\Nicola\.sbt\1.0\plugins, plugins: List(<none>))) took 119.8322ms
+[debug] [Loading] Done in C:\Users\Nicola\.sbt\1.0\plugins, returning: (global-plugins)
+[debug]       Load.loadUnit: loadedProjectsRaw took 171.021ms
+[debug]       Load.loadUnit: cleanEvalClasses took 0.4061ms
+[debug]     Load.loadUnit(file:/C:/Users/Nicola/.sbt/1.0/plugins/, ...) took 335.4325ms
+[debug]   Load.apply: load took 785.1473ms
+[debug]   Load.apply: resolveProjects took 8.4385ms
+[debug]   Load.apply: finalTransforms took 115.8404ms
+[debug]   Load.apply: config.delegates took 10.4594ms
+[debug]   Load.apply: Def.make(settings)... took 765.9394ms
+[debug]   Load.apply: structureIndex took 172.2796ms
+[debug]   Load.apply: mkStreams took 1.8978ms
+[info] loading global plugins from C:\Users\Nicola\.sbt\1.0\plugins
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] Load.defaultLoad until apply took 3850.0762ms
+[debug]           Load.loadUnit: plugins took 48.8516ms
+[debug]           Load.loadUnit: defsScala took 0.0063ms
+[debug] [Loading] Scanning directory C:\Users\Nicola\progettoBigData\progettoBigData\project
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\Nicola\progettoBigData\progettoBigData\project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 3.2625 ms
+[debug]               Load.resolveProject(progettobigdata-build) took 2.7013ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id progettobigdata-build, base: C:\Users\Nicola\progettoBigData\progettoBigData\project, plugins: List(<none>))) took 6.6435ms
+[debug] [Loading] Done in C:\Users\Nicola\progettoBigData\progettoBigData\project, returning: (progettobigdata-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 9.2241ms
+[debug]           Load.loadUnit: cleanEvalClasses took 0.0156ms
+[debug]         Load.loadUnit(file:/C:/Users/Nicola/progettoBigData/progettoBigData/project/, ...) took 60.1892ms
+[debug]       Load.apply: load took 63.5211ms
+[debug]       Load.apply: resolveProjects took 0.1392ms
+[debug]       Load.apply: finalTransforms took 15.6125ms
+[debug]       Load.apply: config.delegates took 1.2018ms
+[debug]       Load.apply: Def.make(settings)... took 186.6587ms
+[debug]       Load.apply: structureIndex took 57.7483ms
+[debug]       Load.apply: mkStreams took 0.0024ms
+[info] loading project definition from C:\Users\Nicola\progettoBigData\progettoBigData\project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 808.8206ms
+[debug]     Load.loadUnit: defsScala took 0.0034ms
+[debug] [Loading] Scanning directory C:\Users\Nicola\progettoBigData\progettoBigData
+[debug]       Load.loadUnit: mkEval took 9.8503ms
+[debug] [Loading] Found root project root w/ remaining 
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 1.6782 ms
+[info] loading settings for project root from build.sbt ...
+[debug]         Load.resolveProject(root) took 2.7641ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id root, base: C:\Users\Nicola\progettoBigData\progettoBigData, plugins: List(<none>))) took 5.7851ms
+[debug] [Loading] Done in C:\Users\Nicola\progettoBigData\progettoBigData, returning: (root)
+[debug]     Load.loadUnit: loadedProjectsRaw took 3538.4053ms
+[debug]     Load.loadUnit: cleanEvalClasses took 11.0055ms
+[debug]   Load.loadUnit(file:/C:/Users/Nicola/progettoBigData/progettoBigData/, ...) took 4359.0956ms
+[debug] Load.apply: load took 4362.2068ms
+[debug] Load.apply: resolveProjects took 0.1665ms
+[debug] Load.apply: finalTransforms took 11.1651ms
+[debug] Load.apply: config.delegates took 0.4622ms
+[debug] Load.apply: Def.make(settings)... took 150.5639ms
+[debug] Load.apply: structureIndex took 37.7072ms
+[debug] Load.apply: mkStreams took 0.0027ms
+[info] set current project to progettoBigData (in build file:/C:/Users/Nicola/progettoBigData/progettoBigData/)
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(shell, None, None)
+[info] sbt server started at local:sbt-server-9f1eb424e58fc297a9cd
+[debug] Writing bsp connection file
+[info] started sbt server
