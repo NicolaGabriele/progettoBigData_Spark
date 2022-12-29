@@ -1,0 +1,5 @@
+[debug] > Exec(-deprecation, None, None)
+[error] Expected 'debug'
+[error] -deprecation
+[error]    ^
+[debug] > Exec(idea-shell, None, None)

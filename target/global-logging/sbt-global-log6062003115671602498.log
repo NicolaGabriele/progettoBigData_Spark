@@ -1,0 +1,10 @@
+[debug] > Exec(package, None, None)
+[debug] Evaluating tasks: Compile / package
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] compiling 5 Scala sources to C:\Users\Nicola\progettoBigData\progettoBigData\target\scala-2.13\classes ...
+[info] Non-compiled module 'compiler-bridge_2.13' for Scala 2.13.2. Compiling...
+[info]   Compilation completed in 14.541s.
+[info] done compiling
+[warn] multiple main classes detected: run 'show discoveredMainClasses' to see the list
+[success] Total time: 20 s, completed 28-dic-2022 14.48.28
+[debug] > Exec(idea-shell, None, None)

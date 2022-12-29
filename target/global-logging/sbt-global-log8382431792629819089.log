@@ -1,0 +1,6 @@
+[debug] > Exec(package, None, None)
+[debug] Evaluating tasks: Compile / package
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[warn] multiple main classes detected: run 'show discoveredMainClasses' to see the list
+[success] Total time: 3 s, completed 28-dic-2022 14.22.42
+[debug] > Exec(idea-shell, None, None)
