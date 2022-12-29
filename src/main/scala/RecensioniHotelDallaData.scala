@@ -22,7 +22,7 @@ object RecensioniHotelDallaData extends Query {
       .getOrCreate()
     val context: SparkContext = spark.sparkContext
 
-    val file = context.textFile("C:\\Users\\Nicola\\progettoBigData\\progettoBigData\\Hotel_Reviews.csv")
+    val file = context.textFile("C:\\progettoBigData\\progettoBigData\\Hotel_Reviews.csv")
 
     file.filter(row => {
       val costr1 = row.split(",")(4).equals(nation)
@@ -41,7 +41,7 @@ object RecensioniHotelDallaData extends Query {
             splitted(6)+"\n"
           else
             splitted(6)+"\n"+splitted(9)+"\n "
-      }).saveAsTextFile("C:\\Users\\Nicola\\progettoBigData\\progettoBigData\\results\\result")
+      }).saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")
   }
 
 }
