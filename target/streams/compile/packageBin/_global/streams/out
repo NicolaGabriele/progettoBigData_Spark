@@ -1,5 +1,9 @@
 [debug] Packaging C:\progettoBigData\progettoBigData\target\scala-2.12\progettobigdata_2.12-0.1.0-SNAPSHOT.jar ...
 [debug] Input file mappings:
+[debug] 	AverageScoreFilter$.class
+[debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\AverageScoreFilter$.class
+[debug] 	AverageScoreFilter.class
+[debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\AverageScoreFilter.class
 [debug] 	CoppieHotelPunteggioMedioPerNazione$.class
 [debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\CoppieHotelPunteggioMedioPerNazione$.class
 [debug] 	CoppieHotelPunteggioMedioPerNazione.class
@@ -22,6 +26,10 @@
 [debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\RecensioniHotelDallaData$.class
 [debug] 	RecensioniHotelDallaData.class
 [debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\RecensioniHotelDallaData.class
+[debug] 	ReviewsNumberFilter$.class
+[debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\ReviewsNumberFilter$.class
+[debug] 	ReviewsNumberFilter.class
+[debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\ReviewsNumberFilter.class
 [debug] 	WordCountNegative$.class
 [debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\WordCountNegative$.class
 [debug] 	WordCountNegative.class
