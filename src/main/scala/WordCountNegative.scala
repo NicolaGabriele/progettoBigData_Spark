@@ -6,7 +6,7 @@ object WordCountNegative extends Query {
 
   /*
     autore: Dave
-    la classe implementa la query che restituisce le parole più presenti nelle recensioni negative.
+    1) la classe implementa la query che restituisce le parole più presenti nelle recensioni negative.
    */
 
   def main(args: Array[String]): Unit = {
@@ -28,9 +28,6 @@ object WordCountNegative extends Query {
     val result = wordCount(file)
 
     result.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")
-
-    //result.sortByKey(false).take(100).foreach(println) (Dave questa è solo di debug o va lasciata?) fai tu
-
 
   }
 

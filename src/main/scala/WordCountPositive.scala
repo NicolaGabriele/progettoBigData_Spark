@@ -6,7 +6,7 @@ object WordCountPositive extends Query {
 
   /*
      autore: Dave
-     la classe implementa la query che restituisce le parole più presenti nelle recensioni positive
+     2) la classe implementa la query che restituisce le parole più presenti nelle recensioni positive
     */
 
   def main(args: Array[String]): Unit = {
@@ -28,7 +28,6 @@ object WordCountPositive extends Query {
     val result = wordCount(file)
 
     result.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")
-    //result.sortByKey(false).take(100).foreach(println) (Dave questa è solo di debug o va lasciata?)
 
   }
 
