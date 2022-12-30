@@ -1,1 +1,25 @@
-[debug] Jar uptodate: C:\Users\Nicola\progettoBigData\progettoBigData\target\scala-2.12\progettobigdata_2.12-0.1.0-SNAPSHOT.jar
+[debug] Packaging C:\progettoBigData\progettoBigData\target\scala-2.12\progettobigdata_2.12-0.1.0-SNAPSHOT.jar ...
+[debug] Input file mappings:
+[debug] 	CoppieHotelPunteggioMedioPerNazione$.class
+[debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\CoppieHotelPunteggioMedioPerNazione$.class
+[debug] 	CoppieHotelPunteggioMedioPerNazione.class
+[debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\CoppieHotelPunteggioMedioPerNazione.class
+[debug] 	GeoDataHotelsInNation$.class
+[debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\GeoDataHotelsInNation$.class
+[debug] 	GeoDataHotelsInNation.class
+[debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\GeoDataHotelsInNation.class
+[debug] 	Query.class
+[debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\Query.class
+[debug] 	RecensioniHotelDallaData$.class
+[debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\RecensioniHotelDallaData$.class
+[debug] 	RecensioniHotelDallaData.class
+[debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\RecensioniHotelDallaData.class
+[debug] 	WordCountNegative$.class
+[debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\WordCountNegative$.class
+[debug] 	WordCountNegative.class
+[debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\WordCountNegative.class
+[debug] 	WordCountPositive$.class
+[debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\WordCountPositive$.class
+[debug] 	WordCountPositive.class
+[debug] 	  C:\progettoBigData\progettoBigData\target\scala-2.12\classes\WordCountPositive.class
+[debug] Done packaging.

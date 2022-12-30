@@ -26,11 +26,11 @@ object GeoDataHotelsInNation extends Query {
 
     //ATTENZIONE!! il path del file va sostituito con il vostro
     // absolute path del datatset (Serve per quello assoluto per le api rest)
-    val file = context.textFile("C:\\Users\\Nicola\\progettoBigData\\progettoBigData\\Hotel_Reviews.csv")
+    val file = context.textFile("C:\\progettoBigData\\progettoBigData\\Hotel_Reviews.csv")
 
     val result = getHotelsInNation(converted(0),file)
 
-    result.saveAsTextFile("C:\\Users\\Nicola\\progettoBigData\\progettoBigData\\results\\result")
+    result.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")
   }
 
   def getHotelsInNation(nation:String, file:RDD[String]) ={

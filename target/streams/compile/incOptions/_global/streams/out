@@ -1,2 +1,38 @@
-[debug] Created transactional ClassFileManager with tempDir = C:\Users\Nicola\progettoBigData\progettoBigData\target\scala-2.12\classes.bak
-[debug] Removing the temporary directory used for backing up class files: C:\Users\Nicola\progettoBigData\progettoBigData\target\scala-2.12\classes.bak
+[debug] Created transactional ClassFileManager with tempDir = C:\progettoBigData\progettoBigData\target\scala-2.12\classes.bak
+[debug] About to delete class files:
+[debug] 	WordCountNegative.class
+[debug] 	CoppieHotelPunteggioMedioPerNazione.class
+[debug] 	WordCountNegative$.class
+[debug] 	GeoDataHotelsInNation$.class
+[debug] 	WordCountPositive.class
+[debug] 	Query.class
+[debug] 	GeoDataHotelsInNation.class
+[debug] 	CoppieHotelPunteggioMedioPerNazione$.class
+[debug] 	RecensioniHotelDallaData$.class
+[debug] 	WordCountPositive$.class
+[debug] 	RecensioniHotelDallaData.class
+[debug] We backup class files:
+[debug] 	WordCountNegative.class
+[debug] 	CoppieHotelPunteggioMedioPerNazione.class
+[debug] 	WordCountNegative$.class
+[debug] 	GeoDataHotelsInNation$.class
+[debug] 	WordCountPositive.class
+[debug] 	Query.class
+[debug] 	GeoDataHotelsInNation.class
+[debug] 	CoppieHotelPunteggioMedioPerNazione$.class
+[debug] 	RecensioniHotelDallaData$.class
+[debug] 	WordCountPositive$.class
+[debug] 	RecensioniHotelDallaData.class
+[debug] Registering generated classes:
+[debug] 	WordCountNegative.class
+[debug] 	CoppieHotelPunteggioMedioPerNazione.class
+[debug] 	WordCountNegative$.class
+[debug] 	GeoDataHotelsInNation$.class
+[debug] 	WordCountPositive.class
+[debug] 	Query.class
+[debug] 	GeoDataHotelsInNation.class
+[debug] 	CoppieHotelPunteggioMedioPerNazione$.class
+[debug] 	RecensioniHotelDallaData$.class
+[debug] 	WordCountPositive$.class
+[debug] 	RecensioniHotelDallaData.class
+[debug] Removing the temporary directory used for backing up class files: C:\progettoBigData\progettoBigData\target\scala-2.12\classes.bak
