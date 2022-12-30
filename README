@@ -10,9 +10,9 @@ idea: stabilire che cosa influenza maggiormente le recensioni di un visitatore
 
 4) Filtrare gli hotel in base all'Average_Score creando così una sorta di classifica //TODO
 
-5) Contare numero di recensioni positive per ogni hotel e restituirne la coppia hotel-numero} //TODO
+5) Contare numero di recensioni positive per ogni hotel e restituirne la coppia hotel-numero} //TODO nel web-server
                                                                                             }<- lato front-end si potrebbe implementare una sorta di like/dislike youtube style
-6) Contare numero di recensioni negative per ogni hotel e restituirne la coppia hotel-numero} //TODO
+6) Contare numero di recensioni negative per ogni hotel e restituirne la coppia hotel-numero} //TODO nel web-server
 
 7) Filtrare le recensioni in base al giorno in cui è stata fatta(
    ad esempio nelle ultime 24 ore, negli ultimi 7 giorni, nell'ultimo mese, ecc..) //TODO

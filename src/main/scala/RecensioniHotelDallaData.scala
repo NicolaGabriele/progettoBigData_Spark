@@ -26,14 +26,18 @@ object RecensioniHotelDallaData extends Query {
 
     file.filter(row => {
       val costr1 = row.split(",")(4).equals(nation)
+      println("costr1 "+costr1)
       var costr2 = false
       val split1 = row.split("\"")
+      println("split1 "+split1.toString)
       if(split1.length>1)
         costr2 = split1(2).split(",")(1).split(" ")(0).toInt < days
+      println("costr2 "+costr2)
       costr1 && costr2
     })
       .map(row => {
         val splitted = row.split(",")
+        println("splitted "+splitted)
         if(splitted(6).toLowerCase().equals("no negative"))
           splitted(9)+"\n"
         else
