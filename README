@@ -1,11 +1,16 @@
 Idee per le madonna di query:
 #ARMANDOSIAMOCONTE
 
+ALBERGATORI:
 1) Wordcount recensioni negative
 2) Wordcount recensioni positive
 idea: stabilire che cosa influenza maggiormente le recensioni di un visitatore
 //TODO eliminare le "stopwords"
 
+10) Clienti più/meno esigenti sulla base della nazionalità
+
+
+VISITATORI:
 3) Dato il nome di una nazione trovare gli hotel di quella nazione //DO
 (Già fatta, va solo implementato il meccanismo di trasferimento al frontend)
 
@@ -22,6 +27,7 @@ Mini filtraggi vari per la visualizzazione degli hotel su mappa:
 3), 4),
 8) Filtro soglia per punteggio medio
 9) Filtro per numero totale di recensioni
+
 
 
 
