@@ -29,6 +29,8 @@ object DemandingClientsPerNationality extends Query {
     }
      */
 
+    //todo si potrebbe migliorare la query scartando tutte le nazionalità con meno di 50 o 100 recensioni
+
     //todo si può fare meglio?
     val nat_total_score = filtrato.map(item => {
       val splitted = item.split(",")
