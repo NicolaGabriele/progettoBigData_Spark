@@ -1,0 +1,8 @@
+[debug] > Exec(package, None, None)
+[debug] Evaluating tasks: Compile / package
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] compiling 1 Scala source to C:\progettoBigData\progettoBigData\target\scala-2.12\classes ...
+[info] done compiling
+[warn] multiple main classes detected: run 'show discoveredMainClasses' to see the list
+[success] Total time: 9 s, completed 4-gen-2023 17.38.06
+[debug] > Exec(idea-shell, None, None)
