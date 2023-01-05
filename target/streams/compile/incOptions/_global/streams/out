@@ -2,6 +2,6 @@
 [debug] About to delete class files:
 [debug] We backup class files:
 [debug] Registering generated classes:
-[debug] 	ReviewsNumberFilter$.class
-[debug] 	ReviewsNumberFilter.class
+[debug] 	DemandingClientsPerNationality.class
+[debug] 	DemandingClientsPerNationality$.class
 [debug] Removing the temporary directory used for backing up class files: C:\progettoBigData\progettoBigData\target\scala-2.12\classes.bak
