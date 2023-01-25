@@ -1,16 +1,10 @@
 Idee per le query:
 
-ALBERGATORI:
 1) Wordcount recensioni negative
 2) Wordcount recensioni positive
 idea: stabilire che cosa influenza maggiormente le recensioni di un visitatore
 //TODO eliminare le "stopwords"
 
-10) Clienti più/meno esigenti sulla base della nazionalità
-11) Rapporto tra esperienza del cliente e punteggio assegnato (//TODO concludere + spring)
-
-
-VISITATORI:
 3) Dato il nome di una nazione trovare gli hotel di quella nazione //DO
 (Già fatta, va solo implementato il meccanismo di trasferimento al frontend)
 
@@ -28,7 +22,18 @@ Mini filtraggi vari per la visualizzazione degli hotel su mappa:
 8) Filtro soglia per punteggio medio
 9) Filtro per numero totale di recensioni
 
+10) Clienti più/meno esigenti sulla base della nazionalità
+11) Rapporto tra esperienza del cliente e punteggio assegnato (//TODO concludere + spring)
 
+12) Studiare score della recensione in funzione del tempo (sfruttare la colonna 2 e 12) //TODO
+
+13) Classificare gli hotel migliori in base ai tags (colonna 13) //TODO
+osservazione: nella colonna 13, il vettore è così composto:
+pos0 = tipo di viaggio effettuato
+pos1 = solo/famiglia/in gruppo
+pos2 = tipo stanza
+pos3 = quanto tempo è rimasto in albergo
+pos4 (può non esserci) = recensione (?) effettuata dal telefono o no
 
 
 
