@@ -23,9 +23,9 @@ Mini filtraggi vari per la visualizzazione degli hotel su mappa:
 9) Filtro per numero totale di recensioni
 
 10) Clienti più/meno esigenti sulla base della nazionalità
-11) Rapporto tra esperienza del cliente e punteggio assegnato (//TODO concludere + spring)
+11) Rapporto tra esperienza del cliente e punteggio assegnato (//TODO concludere + web-server)
 
-12) Studiare score della recensione in funzione del tempo (sfruttare la colonna 2 e 12) //TODO
+12) Studiare score della recensione in funzione del tempo (sfruttare la colonna 2 e 12) //TODO nel web-server
 
 13) Classificare gli hotel migliori in base ai tags (colonna 13) //TODO
 osservazione: nella colonna 13, il vettore è così composto:
