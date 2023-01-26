@@ -38,6 +38,8 @@ object NaiveBayesian extends Query {
     .withColumnRenamed("_c1", "text")
     df.show()
 
+    //todo, selezionare meno righe e fare shuffle
+
     //clean data and tokenize sentences using RegexTokenizer
     val regexTokenizer = new RegexTokenizer()
     regexTokenizer.setInputCol("text")
