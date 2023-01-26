@@ -27,7 +27,13 @@ Mini filtraggi vari per la visualizzazione degli hotel su mappa:
 
 12) Studiare score della recensione in funzione del tempo (sfruttare la colonna 2 e 12) //TODO nel web-server
 
-13) Classificare gli hotel migliori in base ai tags (colonna 13) //TODO
+Query di servizio:
+13) Dato il nome di un hotel, restituire tutti i tag distinti
+14) Data un nome di un hotel e una categoria di tag, restituisce tutti i tag distinti //TODO IN SOSPESO
+
+15) Dato un hotel e un tag, restituire totale recensioni e punteggio medio //TODO nel web-server
+
+16) Classificare gli hotel migliori in base ai tags (colonna 13) //TODO
 osservazione: nella colonna 13, il vettore è così composto:
 pos0 = tipo di viaggio effettuato
 pos1 = solo/famiglia/in gruppo
