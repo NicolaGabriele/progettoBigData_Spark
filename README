@@ -3,15 +3,15 @@ Idee per le query:
 1) Wordcount recensioni negative
 2) Wordcount recensioni positive
 idea: stabilire che cosa influenza maggiormente le recensioni di un visitatore
-//TODO eliminare le "stopwords"
 
-3) Dato il nome di una nazione trovare gli hotel di quella nazione //DO
+3) Dato il nome di una nazione trovare gli hotel di quella nazione
 (Già fatta, va solo implementato il meccanismo di trasferimento al frontend)
 
 4) Filtrare gli hotel in base all'Average_Score creando così una sorta di classifica
 
-5) Contare numero di recensioni positive per ogni hotel e restituirne la coppia hotel-numero}
-                                                                                            }<- lato front-end si potrebbe implementare una sorta di like/dislike youtube style
+5) Contare numero di recensioni positive per ogni hotel e restituirne la coppia hotel-numero
+( lato front-end si potrebbe implementare una sorta di like/dislike youtube style )
+
 6) Contare numero di recensioni negative per ogni hotel e restituirne la coppia hotel-numero}
 
 7) Filtrare le recensioni in base al giorno in cui è stata fatta(
@@ -41,7 +41,8 @@ pos2 = tipo stanza
 pos3 = quanto tempo è rimasto in albergo
 pos4 (può non esserci) = recensione (?) effettuata dal telefono o no
 
-17) NAIVE BAYESIAN //TODO
+17) NAIVE BAYESIAN
+(modello addestrato, //todo rimane da capire come usarlo)
 
 
 DATASET:

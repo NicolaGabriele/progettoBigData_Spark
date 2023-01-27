@@ -29,9 +29,10 @@ object WordCountNegative extends Query {
 
   }
 
-  val stopWords = Array("i","me","my","we","you","it","its","what","which",
-    "this","that","am","is","are","was","were","be","have","has","had","a","an","the","and","but",
-    "or","of","at","to","on","off", "no", "not", "so", "s", "t","negative","positive","in","for","there")
+  val stopWords = Array("","i","me","my","we","you","it","its","what","which","with","as","they","from",
+    "this","that","am","is","are","was","were","be","have","has","had","a","an","the","and","but","nothing",
+    "or","of","at","to","on","off", "no", "not", "so", "s", "t","negative","positive","in","for","there","very",
+    "our","would","could","when","all","too","one","only","bit","out","didn","if","more","been","us","get","up")
 
   def isStopWord(input: String, lista: Array[String]): Boolean = {
     for (w <- lista){
