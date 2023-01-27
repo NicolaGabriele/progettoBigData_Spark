@@ -21,8 +21,6 @@ object WordCountNegative extends Query {
 
     val context: SparkContext = spark.sparkContext
 
-    //ATTENZIONE!! il path del file va sostituito con il vostro
-    // absolute path del datatset (Serve per quello assoluto per le api rest)
     val file = context.textFile("C:\\progettoBigData\\progettoBigData\\Hotel_Reviews.csv")
 
     val result = wordCount(file)
@@ -31,11 +29,24 @@ object WordCountNegative extends Query {
 
   }
 
+  val stopWords = Array("i","me","my","we","you","it","its","what","which",
+    "this","that","am","is","are","was","were","be","have","has","had","a","an","the","and","but",
+    "or","of","at","to","on","off", "no", "not", "so", "s", "t","negative","positive","in","for","there")
+
+  def isStopWord(input: String, lista: Array[String]): Boolean = {
+    for (w <- lista){
+      if (input.equals(w)) return true
+    }
+    false
+  }
   def wordCount(file: RDD[String]) = {
     file.map(items => { items.split(",")(6) }) //prendo la colonna "Negative_Reviews"
       .filter(items => (!items.equals("No Negative") || !items.equals(""))) //non devo considerare tutte quelle recensioni "No Negative" o vuote
       .map(items => items.toLowerCase())
       .flatMap(items => items.split(" "))
+      .filter(item => {
+              !isStopWord(item,stopWords)
+       })
       .map(word => (word, 1))
       .reduceByKey(_ + _)
       .map(word => (word._2, word._1))
