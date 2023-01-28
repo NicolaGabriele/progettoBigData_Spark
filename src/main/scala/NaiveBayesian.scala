@@ -2,7 +2,7 @@ import CreateDataset.compute
 import org.apache.spark.SparkContext
 import org.apache.spark.ml.{Pipeline, PipelineStage}
 import org.apache.spark.sql.SparkSession
-import org.apache.spark.ml.feature.{CountVectorizer, LabeledPoint, RegexTokenizer, StringIndexer, VectorAssembler}
+import org.apache.spark.ml.feature.{CountVectorizer, CountVectorizerModel, LabeledPoint, RegexTokenizer, StringIndexer, VectorAssembler}
 import org.apache.spark.ml.linalg.Vectors
 import org.apache.spark.mllib.classification.NaiveBayes
 import org.apache.spark.mllib.classification.NaiveBayesModel
@@ -11,9 +11,6 @@ import shapeless.ops.nat.GT.>
 import org.apache.spark.sql.functions.rand
 
 import javax.servlet.Registration.Dynamic
-
-
-
 
 object NaiveBayesian extends Query {
 
@@ -36,7 +33,9 @@ object NaiveBayesian extends Query {
 
 
     /*
+    //preparazione del dataset
 
+    //estrazione dataframe
     val df = spark.read.option("header", "false")
     .option("delimiter", ",")
     .option("inferSchema", "true")
@@ -47,7 +46,9 @@ object NaiveBayesian extends Query {
 
     //shuffle e selezione di righe
     val shuffledDF = df.orderBy(rand())
-    val dataframe = shuffledDF.limit(5000)
+    val dataframe = shuffledDF.limit(100000)
+    //todo possibilità di sbilanciamento delle classi? (credo di no)
+
 
     //preprocessing
 
@@ -71,20 +72,31 @@ object NaiveBayesian extends Query {
     vecAssembler.setInputCols(arr)
     vecAssembler.setOutputCol("features")
 
-    val stages = Array(regexTokenizer,cv,indexer,vecAssembler)
 
+    //costruzione della pipeline che serve per le nuove recensioni (regexTokenizer,countVectorizer,vectorAssembler)
+    val stages = Array(regexTokenizer,cv,vecAssembler)
     val pipeline = new Pipeline()
     pipeline.setStages(stages)
-    val data = pipeline.fit(dataframe).transform(dataframe)
+    val modelPipeline = pipeline.fit(dataframe)
+    val data = modelPipeline.transform(dataframe)
 
-    val nuovoData = data.drop("label_string","text","tokens","token_features")
+    //todo cosa succede se alcune parole non vengono trovate?
+    modelPipeline.save("C:\\progettoBigData\\progettoBigData\\models\\pipelineModel")
+
+
+    //completiamo con l'indexer, per avere un dataframe con label (utile per l'addestramento)
+    val finalData = indexer.fit(data).transform(data)
+    finalData.show()
+
+    val nuovoData = finalData.drop("label_string","text","tokens","token_features")
     nuovoData.show()
+
 
     val rddData = nuovoData.rdd
 
     //creazione del formato LIBSVM (serve per l'input del Naive Bayesian)
     val nuovoDataset = rddData.map(row => {
-      val parola = row.get(1).toString
+      val parola = row.get(0).toString
       val split1 = parola.split("\\[")
       val indici = split1(1).split("]")(0)
       val frequenze = split1(2).split("]")(0)
@@ -98,25 +110,35 @@ object NaiveBayesian extends Query {
         }
         i = i+1
       }
-      row.get(0) + " " + assegnazioni
+      row.get(1) + " " + assegnazioni
     })
 
     nuovoDataset.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")
-     */
+
+    */
 
 
+    /*
     val importedData = MLUtils.loadLibSVMFile(context, "C:\\progettoBigData\\progettoBigData\\nuovoDataset")
 
     val Array(training, test) = importedData.randomSplit(Array(0.7, 0.3),2023)
 
-    val model = NaiveBayes.train(training, lambda = 1.0, modelType = "multinomial")
+    val modelBayes = NaiveBayes.train(training, lambda = 1.0, modelType = "multinomial")
 
-    val predictionAndLabel = test.map(p => (model.predict(p.features), p.label))
+    val predictionAndLabel = test.map(p => (modelBayes.predict(p.features), p.label))
     val accuracy = 1.0 * predictionAndLabel.filter(x => x._1 == x._2).count() / test.count()
 
+    //accuratezza del 92%
     print("accuratezza: ")
     print(accuracy.toString)
     print("\n")
+
+    //salvataggio del modello addestrato
+    modelBayes.save(context,"C:\\progettoBigData\\progettoBigData\\models\\bayesModel")
+     */
+
+
+    //prova predizioni richiamando i modelli salvati
 
 
   }
