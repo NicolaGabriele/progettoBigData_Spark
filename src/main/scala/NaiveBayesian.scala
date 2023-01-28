@@ -33,6 +33,7 @@ object NaiveBayesian extends Query {
 
 
     /*
+
     //preparazione del dataset
 
     //estrazione dataframe
@@ -115,7 +116,9 @@ object NaiveBayesian extends Query {
 
     nuovoDataset.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")
 
-    */
+
+
+     */
 
 
     /*
@@ -139,12 +142,16 @@ object NaiveBayesian extends Query {
     //salvataggio del modello addestrato
     modelBayes.save(context,"C:\\progettoBigData\\progettoBigData\\models\\bayesModel")
 
+     */
 
-    */
+
+
 
     //prova predizioni richiamando i modelli salvati
     val modelloPipeline = PipelineModel.load("C:\\progettoBigData\\progettoBigData\\models\\pipelineModel")
-    val modelloBayes = NaiveBayesModel.load(context,"C:\\progettoBigData\\progettoBigData\\models\\bayesModel")
+    val lastValue = 13384
+    val recensioni_positive = 0
+    val recensioni_negative = 1
 
     //todo: classe 0 e 1? qual è positiva e quale negativa?
 
@@ -176,17 +183,24 @@ object NaiveBayesian extends Query {
         }
         i = i + 1
       }
-      0 + " " + assegnazioni //assegno una label di prova (non serve)
+      0 + " " + assegnazioni + lastValue.toString+":0.0"//assegno una label di prova (non serve), inoltre assegno anche l'ultima colonna con valore 0
     })
 
 
-    inputNaive.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")
+    inputNaive.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result\\part-00000")
 
-    val importedInput = MLUtils.loadLibSVMFile(context, "C:\\progettoBigData\\progettoBigData\\recensioneIndicizzata")
+    val modelloBayes = NaiveBayesModel.load(context,"C:\\progettoBigData\\progettoBigData\\models\\bayesModel")
 
-    val valorePredetto = importedInput.map( p => {modelloBayes.predict(p.features)})
+    val importedInput = MLUtils.loadLibSVMFile(context, "C:\\progettoBigData\\progettoBigData\\results\\result\\part-00000")
+
+    val valorePredetto = importedInput.map( p => {
+      (modelloBayes.predict(p.features),modelloBayes.predictProbabilities(p.features))
+    })
 
     valorePredetto.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result2")
+
+    //todo sistema problema punteggiatura, viene creata una colonna _c1!
+    //todo prova aggiungendo delle parole che non esistono
 
   }
 
