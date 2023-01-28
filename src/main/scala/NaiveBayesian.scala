@@ -1,6 +1,6 @@
 import CreateDataset.compute
 import org.apache.spark.SparkContext
-import org.apache.spark.ml.{Pipeline, PipelineStage}
+import org.apache.spark.ml.{Pipeline, PipelineModel, PipelineStage}
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.ml.feature.{CountVectorizer, CountVectorizerModel, LabeledPoint, RegexTokenizer, StringIndexer, VectorAssembler}
 import org.apache.spark.ml.linalg.Vectors
@@ -119,6 +119,7 @@ object NaiveBayesian extends Query {
 
 
     /*
+
     val importedData = MLUtils.loadLibSVMFile(context, "C:\\progettoBigData\\progettoBigData\\nuovoDataset")
 
     val Array(training, test) = importedData.randomSplit(Array(0.7, 0.3),2023)
@@ -128,17 +129,61 @@ object NaiveBayesian extends Query {
     val predictionAndLabel = test.map(p => (modelBayes.predict(p.features), p.label))
     val accuracy = 1.0 * predictionAndLabel.filter(x => x._1 == x._2).count() / test.count()
 
+
     //accuratezza del 92%
     print("accuratezza: ")
     print(accuracy.toString)
     print("\n")
 
+
     //salvataggio del modello addestrato
     modelBayes.save(context,"C:\\progettoBigData\\progettoBigData\\models\\bayesModel")
-     */
 
+
+    */
 
     //prova predizioni richiamando i modelli salvati
+    val modelloPipeline = PipelineModel.load("C:\\progettoBigData\\progettoBigData\\models\\pipelineModel")
+    val modelloBayes = NaiveBayesModel.load(context,"C:\\progettoBigData\\progettoBigData\\models\\pipelineModel")
+
+    //todo: classe 0 e 1? qual è positiva e quale negativa?
+
+    val df = spark.read.option("header", "false")
+      .csv("provaRecensione")
+      .withColumnRenamed("_c0", "text")
+    df.show()
+
+    val nuoviDati = modelloPipeline.transform(df)
+
+    val rddNuoviDati = nuoviDati.rdd
+
+    //creazione del formato LIBSVM (serve per l'input del Naive Bayesian)
+    val inputNaive = rddNuoviDati.map(row => {
+      val parola = row.get(0).toString
+      val split1 = parola.split("\\[")
+      val indici = split1(1).split("]")(0)
+      val frequenze = split1(2).split("]")(0)
+      val splittedIndici = indici.split(",")
+      val splittedFreq = frequenze.split(",")
+      var assegnazioni = ""
+      var i = 0
+      while (i < splittedIndici.length) {
+        if (!splittedIndici(i).equals("")) {
+          assegnazioni = assegnazioni + (splittedIndici(i).toInt + 1).toString + ":" + splittedFreq(i) + " "
+        }
+        i = i + 1
+      }
+      row.get(1) + " " + assegnazioni
+    })
+
+
+    //prova
+    val vector = Vectors.dense(1,2,3)
+
+    val valorePredetto = modelloBayes.predict(vector)
+
+    print(valorePredetto)
+
 
 
   }
