@@ -3,7 +3,7 @@ import org.apache.spark.SparkContext
 import org.apache.spark.ml.{Pipeline, PipelineModel, PipelineStage}
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.ml.feature.{CountVectorizer, CountVectorizerModel, LabeledPoint, RegexTokenizer, StringIndexer, VectorAssembler}
-import org.apache.spark.ml.linalg.Vectors
+import org.apache.spark.mllib.linalg.{Vector, Vectors}
 import org.apache.spark.mllib.classification.NaiveBayes
 import org.apache.spark.mllib.classification.NaiveBayesModel
 import org.apache.spark.mllib.util.MLUtils
@@ -144,7 +144,7 @@ object NaiveBayesian extends Query {
 
     //prova predizioni richiamando i modelli salvati
     val modelloPipeline = PipelineModel.load("C:\\progettoBigData\\progettoBigData\\models\\pipelineModel")
-    val modelloBayes = NaiveBayesModel.load(context,"C:\\progettoBigData\\progettoBigData\\models\\pipelineModel")
+    val modelloBayes = NaiveBayesModel.load(context,"C:\\progettoBigData\\progettoBigData\\models\\bayesModel")
 
     //todo: classe 0 e 1? qual è positiva e quale negativa?
 
@@ -155,7 +155,10 @@ object NaiveBayesian extends Query {
 
     val nuoviDati = modelloPipeline.transform(df)
 
-    val rddNuoviDati = nuoviDati.rdd
+    val nuovoDatiAgain = nuoviDati.drop("label_string", "text", "tokens", "token_features")
+    nuovoDatiAgain.show()
+
+    val rddNuoviDati = nuovoDatiAgain.rdd
 
     //creazione del formato LIBSVM (serve per l'input del Naive Bayesian)
     val inputNaive = rddNuoviDati.map(row => {
@@ -173,18 +176,17 @@ object NaiveBayesian extends Query {
         }
         i = i + 1
       }
-      row.get(1) + " " + assegnazioni
+      0 + " " + assegnazioni //assegno una label di prova (non serve)
     })
 
 
-    //prova
-    val vector = Vectors.dense(1,2,3)
+    inputNaive.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")
 
-    val valorePredetto = modelloBayes.predict(vector)
+    val importedInput = MLUtils.loadLibSVMFile(context, "C:\\progettoBigData\\progettoBigData\\recensioneIndicizzata")
 
-    print(valorePredetto)
+    val valorePredetto = importedInput.map( p => {modelloBayes.predict(p.features)})
 
-
+    valorePredetto.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result2")
 
   }
 
