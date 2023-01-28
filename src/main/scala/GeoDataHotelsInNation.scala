@@ -40,6 +40,6 @@ object GeoDataHotelsInNation extends Query {
       stringa.equals(nation)
     })
     val splitted = onlyNation.map(item=> item.split(","))
-    splitted.map(item=>(item(item.length-2),item(item.length-1))).distinct()
+    splitted.map(item=>(item(item.length-2),item(item.length-1))).distinct().filter(item=>{!item.equals("NA")})
   }
 }

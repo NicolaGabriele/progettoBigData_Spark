@@ -1,4 +1,4 @@
-[warn] scala-library-2.12.15-sources.jar no longer exists at C:\Users\Nicola\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-library\2.12.15\scala-library-2.12.15-sources.jar
+[warn] scala-library-2.12.15-sources.jar no longer exists at C:\Users\david\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-library\2.12.15\scala-library-2.12.15-sources.jar
 [debug] not up to date. inChanged = false, force = false
-[debug] Updating ProjectRef(uri("file:/C:/Users/david/IdeaProjects/progettoBigData/"), "root")...
-[debug] Done updating ProjectRef(uri("file:/C:/Users/david/IdeaProjects/progettoBigData/"), "root")
+[debug] Updating ProjectRef(uri("file:/C:/progettoBigData/progettoBigData_Back/"), "root")...
+[debug] Done updating ProjectRef(uri("file:/C:/progettoBigData/progettoBigData_Back/"), "root")
