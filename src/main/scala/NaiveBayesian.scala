@@ -1,3 +1,4 @@
+import org.apache.commons.text.StringTokenizer
 import org.apache.spark.SparkContext
 import org.apache.spark.ml.PipelineModel
 import org.apache.spark.mllib.classification.NaiveBayesModel
@@ -30,7 +31,17 @@ object NaiveBayesian extends Query{
     //creazione file temporaneo della recensione
     val file = new File("C:\\progettoBigData\\progettoBigData\\tmp\\recensione")
     val fw = new FileWriter(file)
-    fw.write(args(0))
+
+    //rimozione punteggiatura
+    val splitted = args(0).split(",|;|\\.|:|\\(|\\)|\\[|]|!|\\?|")
+    var i = 0
+    var res = ""
+    while (i<splitted.length) {
+      res = res + splitted(i)
+      i = i+1
+    }
+
+    fw.write(res)
     fw.flush()
     fw.close()
 
@@ -38,12 +49,12 @@ object NaiveBayesian extends Query{
     val df = spark.read.option("header", "false")
       .csv("C:\\progettoBigData\\progettoBigData\\tmp\\recensione")
       .withColumnRenamed("_c0", "text")
-    //df.show()
+    df.show()
 
     val nuoviDati = modelloPipeline.transform(df)
 
     val nuovoDatiAgain = nuoviDati.drop("label_string", "text", "tokens", "token_features")
-    //nuovoDatiAgain.show()
+    nuovoDatiAgain.show()
 
     val rddNuoviDati = nuovoDatiAgain.rdd
 
@@ -90,8 +101,6 @@ object NaiveBayesian extends Query{
     }
     print(index.delete()+"\n")
 
-    //todo sistema problema punteggiatura, viene creata una colonna _c1!
-    //todo prova aggiungendo delle parole che non esistono
     //todo possibile miglioramento con l'addestramento del naive bayesian
     //todo aggiusta meglio directory di servizio per il naive bayes
 
