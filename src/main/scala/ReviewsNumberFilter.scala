@@ -27,7 +27,7 @@ object ReviewsNumberFilter extends Query {
     val file = context.textFile("C:\\progettoBigData\\progettoBigData\\Hotel_Reviews.csv")
 
     val reviews = file.map(item => {
-      val splitted = item.split(",")
+      val splitted = item.split(",")//.filter(item=>{!item(item.length-1).equals("NA") && !item(item.length-2).equals("NA")})
       val address = splitted(0)
       val score = splitted(3)
       val name = splitted(4)

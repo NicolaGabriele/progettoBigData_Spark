@@ -1,2 +1,6 @@
 /Hotel_Reviews.csv
 /results
+/models/
+/models/bayesModel/
+/models/pipelineModel/
+
