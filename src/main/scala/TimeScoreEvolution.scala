@@ -39,7 +39,7 @@ object TimeScoreEvolution extends Query {
         val mese = data.split("/")(0).toInt
         val giorno = data.split("/")(1).toInt
         val anno = data.split("/")(2).toInt
-        (anno*365)+(mese*31)+giorno //todo va bene?
+        (anno*365)+(mese*30)+giorno //todo va bene? ora sì, con mese*31 non va bene
       })
 
     result.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")

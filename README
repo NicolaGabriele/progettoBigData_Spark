@@ -25,7 +25,7 @@ Mini filtraggi vari per la visualizzazione degli hotel su mappa:
 10) Clienti più/meno esigenti sulla base della nazionalità
 11) Rapporto tra esperienza del cliente e punteggio assegnato (//TODO concludere + web-server)
 
-12) Studiare score della recensione in funzione del tempo (sfruttare la colonna 2 e 12) //TODO nel web-server
+12) Studiare score della recensione in funzione del tempo (sfruttare la colonna 2 e 12)
 
 Query di servizio:
 13) Dato il nome di un hotel, restituire tutti i tag distinti
