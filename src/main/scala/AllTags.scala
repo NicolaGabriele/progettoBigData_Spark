@@ -42,6 +42,12 @@ object AllTags extends Query {
       ret
     }).flatMap(item => {item.split(",")}).distinct()
 
+    /*
+    val allHotelsName = file.map(item => {
+      "'"+item.split(",")(4)+"'"+","
+    }).distinct()
+     */
+
     allTags.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")
   }
 }

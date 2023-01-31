@@ -15,6 +15,7 @@ object WordCountPositive extends Query {
   }
 
   override def compute(arguments: Any): Unit = {
+    val args = arguments.asInstanceOf[Array[String]]
     val spark = SparkSession.builder
       .appName("Simple Application")
       .master("local[*]")
@@ -26,7 +27,18 @@ object WordCountPositive extends Query {
     // absolute path del datatset (Serve per quello assoluto per le api rest)
     val file = context.textFile("C:\\progettoBigData\\progettoBigData\\Hotel_Reviews.csv")
 
-    val result = wordCount(file)
+    //filtraggio intermedio sull'hotel
+    var submitFile = file
+
+    if(args(0)!="all") {
+      val filteredFile = file.filter(item => {
+        val nomeHotel = args(0).toLowerCase()
+        item.split(",")(4).toLowerCase().equals(nomeHotel)
+      })
+      submitFile = filteredFile
+    }
+
+    val result = wordCount(submitFile)
 
     result.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")
 
@@ -35,7 +47,7 @@ object WordCountPositive extends Query {
   val stopWords = Array("", "i", "me", "my", "we", "you", "it", "its", "what", "which", "with", "as", "they", "from",
     "this", "that", "am", "is", "are", "was", "were", "be", "have", "has", "had", "a", "an", "the", "and", "but", "nothing",
     "or", "of", "at", "to", "on", "off", "no", "not", "so", "s", "t", "negative", "positive", "in", "for", "there", "very",
-    "our", "would", "could", "when", "all", "too", "one", "only", "bit", "out", "didn", "if", "more", "been", "us", "get", "up")
+    "our", "would", "could", "when", "all", "too", "one", "only", "bit", "out", "didn", "if", "more", "been", "us", "get", "up","hotel")
 
 
   def wordCount(file: RDD[String]) = {

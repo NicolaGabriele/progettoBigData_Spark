@@ -14,6 +14,7 @@ object WordCountNegative extends Query {
   }
 
   override def compute(arguments: Any): Unit = {
+    val args = arguments.asInstanceOf[Array[String]]
     val spark = SparkSession.builder()
       .appName("Simple Application")
       .master("local[*]")
@@ -22,8 +23,18 @@ object WordCountNegative extends Query {
     val context: SparkContext = spark.sparkContext
 
     val file = context.textFile("C:\\progettoBigData\\progettoBigData\\Hotel_Reviews.csv")
+    //filtraggio intermedio sull'hotel
+    var submitFile = file
 
-    val result = wordCount(file)
+    if (args(0) != "all") {
+      val filteredFile = file.filter(item => {
+        val nomeHotel = args(0).toLowerCase()
+        item.split(",")(4).toLowerCase().equals(nomeHotel)
+      })
+      submitFile = filteredFile
+    }
+
+    val result = wordCount(submitFile)
 
     result.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")
 
@@ -32,7 +43,7 @@ object WordCountNegative extends Query {
   val stopWords = Array("","i","me","my","we","you","it","its","what","which","with","as","they","from",
     "this","that","am","is","are","was","were","be","have","has","had","a","an","the","and","but","nothing",
     "or","of","at","to","on","off", "no", "not", "so", "s", "t","negative","positive","in","for","there","very",
-    "our","would","could","when","all","too","one","only","bit","out","didn","if","more","been","us","get","up")
+    "our","would","could","when","all","too","one","only","bit","out","didn","if","more","been","us","get","up","hotel")
 
   def isStopWord(input: String, lista: Array[String]): Boolean = {
     for (w <- lista){
