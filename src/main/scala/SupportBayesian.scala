@@ -1,16 +1,8 @@
-import CreateDataset.compute
 import org.apache.spark.SparkContext
-import org.apache.spark.ml.{Pipeline, PipelineModel, PipelineStage}
-import org.apache.spark.sql.SparkSession
-import org.apache.spark.ml.feature.{CountVectorizer, CountVectorizerModel, LabeledPoint, RegexTokenizer, StringIndexer, VectorAssembler}
-import org.apache.spark.mllib.linalg.{Vector, Vectors}
-import org.apache.spark.mllib.classification.NaiveBayes
+import org.apache.spark.ml.PipelineModel
 import org.apache.spark.mllib.classification.NaiveBayesModel
 import org.apache.spark.mllib.util.MLUtils
-import shapeless.ops.nat.GT.>
-import org.apache.spark.sql.functions.rand
-
-import javax.servlet.Registration.Dynamic
+import org.apache.spark.sql.SparkSession
 
 object SupportBayesian extends Query {
 

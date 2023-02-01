@@ -37,11 +37,10 @@ object ReviewsNumberFilter extends Query {
     }
     )
 
-    val countingReviews =
-      reviews.map(word => (word, 1))
+    val countingReviews = reviews.map(word => (word, 1))
       .reduceByKey(_ + _)
       .map(word => (word._2, word._1))
-        .filter(tuple => tuple._1>=cast(0).toInt)
+      .filter(tuple => tuple._1>=cast(0).toInt)
 
     countingReviews.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")
   }
