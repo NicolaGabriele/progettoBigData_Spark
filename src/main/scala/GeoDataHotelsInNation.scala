@@ -38,7 +38,8 @@ object GeoDataHotelsInNation extends Query {
       val address = items.split(",")(0)
       address.contains(nation)
     })
-    val splitted = onlyNation.map(item=> item.split(",")).filter(item=>{!item(item.length-1).equals("NA") && !item(item.length-2).equals("NA")})
-    splitted.map(item=>(item(item.length-2),item(item.length-1))).distinct()
+    val splitted = onlyNation.map(item=> item.split(","))
+      .filter(item=>{!item(item.length-1).equals("NA") && !item(item.length-2).equals("NA")})
+    splitted.map(item=>(item(4),item(0),item(3),item(item.length-2),item(item.length-1))).distinct()
   }
 }
