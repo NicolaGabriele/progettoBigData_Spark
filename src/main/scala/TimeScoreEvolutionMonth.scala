@@ -1,11 +1,11 @@
 import org.apache.spark.SparkContext
 import org.apache.spark.sql.SparkSession
 
-object TimeScoreEvolution extends Query {
+object TimeScoreEvolutionMonth extends Query {
 
   /*
     autore: Dave
-    12) la classe implementa la query che dato il nome dell'hotel restituisce data recensione e punteggio fornito dall'utente
+    12*) la classe implementa la query che dato il nome dell'hotel restituisce data recensione e punteggio fornito dall'utente
     NOTA: I risultati devono essere ordinati cronologicamente
    */
 
@@ -34,7 +34,13 @@ object TimeScoreEvolution extends Query {
         val punteggio = splitted(12)
         data+","+punteggio
       })
-      .map(data => (data.split(",")(0), data.split(",")(1).toDouble))
+      .map(item => {
+        val data = item.split(",")(0).split(("/"))
+        val giorno = "1" //placeholder, fisso il giorno uguale per tutti
+        val mese = data(0)
+        val anno = data(2)
+        (mese+"/"+giorno+"/"+anno, item.split(",")(1).toDouble)
+      })
       .reduceByKey((punt1, punt2) => (punt1 + punt2) / 2)
       .sortBy(item => {
         val data = item._1.split(",")(0)
