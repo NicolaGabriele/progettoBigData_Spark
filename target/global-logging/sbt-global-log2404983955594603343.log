@@ -1,9 +1,0 @@
-[debug] > Exec(package, None, None)
-[debug] Evaluating tasks: Compile / package
-[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
-[info] compiling 1 Scala source to C:\progettoBigData\progettoBigData\target\scala-2.12\classes ...
-[info] done compiling
-[warn] multiple main classes detected: run 'show discoveredMainClasses' to see the list
-[success] Total time: 2 s, completed 2-feb-2023 12.29.53
-[debug] > Exec(idea-shell, None, None)
-[warn] In the last 2378 seconds, 14.809 (0,6%) were spent in GC. [Heap: 0,43GB free of 0,57GB, max 1,33GB] Consider increasing the JVM heap using `-Xmx` or try a different collector, e.g. `-XX:+UseG1GC`, for better performance.

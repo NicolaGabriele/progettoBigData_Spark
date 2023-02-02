@@ -59,7 +59,7 @@ object AllFilters extends Query {
     //mapping su nome, indirizzo, punteggio e coordinate
     val mapping = result2.map(item=>{
       val splitted = item.split(",")
-      (splitted(4),splitted(3),splitted(0),splitted(splitted.length-2),splitted(splitted.length-1)) //nomehotel per debug
+      (splitted(4),splitted(0),splitted(3),splitted(splitted.length-2),splitted(splitted.length-1)) //nomehotel per debug
     })
 
     var result3 = mapping
