@@ -2,27 +2,27 @@
 [debug] IncrementalCompile.incrementalCompile
 [debug] previous = Stamps for: 39 products, 20 sources, 7 libraries
 [debug] current source = Set(${BASE}/src/main/scala/Query.scala, ${BASE}/src/main/scala/CoppieHotelPunteggioMedioPerNazione.scala, ${BASE}/src/main/scala/TimeScoreEvolution.scala, ${BASE}/src/main/scala/CreateDataset.scala, ${BASE}/src/main/scala/GeoDataHotelsInNation.scala, ${BASE}/src/main/scala/AverageScoreFilter.scala, ${BASE}/src/main/scala/ExperienceAverageScore.scala, ${BASE}/src/main/scala/RecensioniHotelDallaData.scala, ${BASE}/src/main/scala/SupportBayesian.scala, ${BASE}/src/main/scala/CoppieHotel_NegReviews.scala, ${BASE}/src/main/scala/TagAverageScore.scala, ${BASE}/src/main/scala/AllFilters.scala, ${BASE}/src/main/scala/AllTags.scala, ${BASE}/src/main/scala/CoppieHotel_PosReviews.scala, ${BASE}/src/main/scala/ReviewsNumberFilter.scala, ${BASE}/src/main/scala/NaiveBayesian.scala, ${BASE}/src/main/scala/WordCountNegative.scala, ${BASE}/src/main/scala/CategoryTag.scala, ${BASE}/src/main/scala/WordCountPositive.scala, ${BASE}/src/main/scala/DemandingClientsPerNationality.scala)
-[debug] > initialChanges = InitialChanges(Changes(added = Set(), removed = Set(), changed = Set(${BASE}/src/main/scala/RecensioniHotelDallaData.scala), unmodified = ...),Set(),Set(),API Changes: Set())
+[debug] > initialChanges = InitialChanges(Changes(added = Set(), removed = Set(), changed = Set(${BASE}/src/main/scala/GeoDataHotelsInNation.scala), unmodified = ...),Set(),Set(),API Changes: Set())
 [debug] 
 [debug] Initial source changes:
 [debug] 	removed: Set()
 [debug] 	added: Set()
-[debug] 	modified: Set(${BASE}/src/main/scala/RecensioniHotelDallaData.scala)
+[debug] 	modified: Set(${BASE}/src/main/scala/GeoDataHotelsInNation.scala)
 [debug] Invalidated products: Set()
 [debug] External API changes: API Changes: Set()
 [debug] Modified binary dependencies: Set()
-[debug] Initial directly invalidated classes: Set(RecensioniHotelDallaData)
+[debug] Initial directly invalidated classes: Set(GeoDataHotelsInNation)
 [debug] Sources indirectly invalidated by:
 [debug] 	product: Set()
 [debug] 	binary dep: Set()
 [debug] 	external source: Set()
-[debug] All initially invalidated classes: Set(RecensioniHotelDallaData)
-[debug] All initially invalidated sources:Set(${BASE}/src/main/scala/RecensioniHotelDallaData.scala)
-[debug] Initial set of included nodes: RecensioniHotelDallaData
+[debug] All initially invalidated classes: Set(GeoDataHotelsInNation)
+[debug] All initially invalidated sources:Set(${BASE}/src/main/scala/GeoDataHotelsInNation.scala)
+[debug] Initial set of included nodes: GeoDataHotelsInNation
 [debug] compilation cycle 1
 [info] compiling 1 Scala source to C:\progettoBigData\progettoBigData\target\scala-2.12\classes ...
 [debug] Getting org.scala-sbt:compiler-bridge_2.12:1.8.0:compile for Scala 2.12.15
-[debug] [zinc] Running cached compiler 1679abad for Scala compiler version 2.12.15
+[debug] [zinc] Running cached compiler 4288eaa for Scala compiler version 2.12.15
 [debug] [zinc] The Scala compiler is invoked with:
 [debug] 	-bootclasspath
 [debug] 	C:\Program Files\Java\jdk1.8.0_202\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_202\jre\classes;C:\Users\david\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-library\2.12.15\scala-library-2.12.15.jar
@@ -34,5 +34,5 @@
 [debug] Final step, transitive dependencies:
 [debug] 	Set()
 [debug] No classes were invalidated.
-[debug] Scala compilation took 15.2337945 s
+[debug] Scala compilation took 2.9855116 s
 [info] done compiling
