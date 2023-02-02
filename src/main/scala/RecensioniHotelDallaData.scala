@@ -14,7 +14,7 @@ object RecensioniHotelDallaData extends Query {
 
   override def compute(arguments: Any): Unit = {
     val args = arguments.asInstanceOf[Array[String]]
-    val nation = args(0)
+    val hotel = args(0)
     val days: Int = args(1).toInt
     val spark: SparkSession = SparkSession.builder
       .appName("RecensioniHotelDallaData")
@@ -25,19 +25,15 @@ object RecensioniHotelDallaData extends Query {
     val file = context.textFile("C:\\progettoBigData\\progettoBigData\\Hotel_Reviews.csv")
 
     file.filter(row => {
-      val costr1 = row.split(",")(4).equals(nation)
-      println("costr1 "+costr1)
+      val costr1 = row.split(",")(4).toLowerCase().equals(hotel.toLowerCase())
       var costr2 = false
       val split1 = row.split("\"")
-      println("split1 "+split1.toString)
       if(split1.length>1)
         costr2 = split1(2).split(",")(1).split(" ")(0).toInt < days
-      println("costr2 "+costr2)
       costr1 && costr2
     })
       .map(row => {
         val splitted = row.split(",")
-        println("splitted "+splitted)
         if(splitted(6).toLowerCase().equals("no negative"))
           splitted(9)+"\n"
         else
