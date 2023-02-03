@@ -25,23 +25,31 @@ object TimeScoreEvolution extends Query {
 
 
     //prendo solo le recensioni sull'hotel che mi interessano, mi prendo solo la data e il punteggio dell'utente
-    val result = file.filter(item => {
+    val dataPunteggi = file.filter(item => {
       item.split(",")(4).toLowerCase().equals(cast(0).toLowerCase())
     })
       .map(item => {
         val splitted = item.split(",")
         val data = splitted(2)
         val punteggio = splitted(12)
-        data+","+punteggio
+        (data,punteggio.toDouble)
       })
-      .map(data => (data.split(",")(0), data.split(",")(1).toDouble))
-      .reduceByKey((punt1, punt2) => (punt1 + punt2) / 2)
+
+    dataPunteggi.cache()
+
+    val dataPunteggioTotale = dataPunteggi.reduceByKey(_ + _)
+
+    val dataRecensioniTotali = dataPunteggi.map(item => (item._1, 1.0))
+      .reduceByKey(_ + _)
+
+    val result = dataPunteggioTotale.join(dataRecensioniTotali)
+      .map(item => (item._1, item._2._1 / item._2._2))
       .sortBy(item => {
         val data = item._1.split(",")(0)
         val mese = data.split("/")(0).toInt
         val giorno = data.split("/")(1).toInt
         val anno = data.split("/")(2).toInt
-        (anno*365)+(mese*30)+giorno //todo va bene? ora sì, con mese*31 non va bene
+        (anno * 365) + (mese * 30) + giorno //todo va bene? ora sì, con mese*31 non va bene
       })
 
     result.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")

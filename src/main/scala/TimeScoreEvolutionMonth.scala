@@ -25,7 +25,7 @@ object TimeScoreEvolutionMonth extends Query {
 
 
     //prendo solo le recensioni sull'hotel che mi interessano, mi prendo solo la data e il punteggio dell'utente
-    val result = file.filter(item => {
+    val dataPunteggi = file.filter(item => {
       item.split(",")(4).toLowerCase().equals(cast(0).toLowerCase())
     })
       .map(item => {
@@ -41,7 +41,16 @@ object TimeScoreEvolutionMonth extends Query {
         val anno = data(2)
         (mese+"/"+giorno+"/"+anno, item.split(",")(1).toDouble)
       })
-      .reduceByKey((punt1, punt2) => (punt1 + punt2) / 2)
+
+    dataPunteggi.cache()
+
+    val dataPunteggioTotale = dataPunteggi.reduceByKey(_ + _)
+
+    val dataRecensioniTotali = dataPunteggi.map(item => (item._1,1.0))
+      .reduceByKey(_ + _)
+
+    val result = dataPunteggioTotale.join(dataRecensioniTotali)
+      .map(item => (item._1,item._2._1/item._2._2))
       .sortBy(item => {
         val data = item._1.split(",")(0)
         val mese = data.split("/")(0).toInt
