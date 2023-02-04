@@ -1,3 +1,4 @@
+
 import org.apache.spark.SparkContext
 import org.apache.spark.sql.SparkSession
 
@@ -29,27 +30,28 @@ object DemandingClientsPerNationality extends Query {
     }
      */
 
-    //todo si potrebbe migliorare la query scartando tutte le nazionalità con meno di 50 o 100 recensioni
+    //todo passaggio hotel?
+    //todo passaggio nazione?
 
-    //todo si può fare meglio?
     val nat_total_score = filtrato.map(item => {
       val splitted = item.split(",")
       val nationality = splitted(5)
       val score = splitted(12)
-      (nationality,score.toFloat)
+      (nationality,score.toDouble)
     }).reduceByKey(_+_)
 
     val nat_num_reviews = filtrato.map(item => {
       val splitted = item.split(",")
       val nationality = splitted(5)
-      (nationality, 1)
-    }).reduceByKey(_+_).collect()
+      (nationality, 1.0)
+    }).reduceByKey(_+_)
 
+    //filtraggio con 100 recensioni
+    val nat_num_filter = nat_num_reviews.filter(item => item._2>=100)
 
-    val result = nat_total_score.map(tuple1 => {
-        val num_tot = nat_num_reviews.find(x => x._1.equals(tuple1._1)).getOrElse(("Pippo",1))
-        (tuple1._1,tuple1._2,num_tot._2)
-    }).map(triple => (triple._1,(triple._2/triple._3)))
+    val result = nat_total_score.join(nat_num_filter)
+      .map(item => (item._1,item._2._1/item._2._2))
+      .sortBy(item => item._2, true)
 
 
     result.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")

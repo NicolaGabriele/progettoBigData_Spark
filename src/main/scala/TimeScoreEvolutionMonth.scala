@@ -1,5 +1,6 @@
+import org.apache.avro.io.Encoder
 import org.apache.spark.SparkContext
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{Encoders, SparkSession}
 
 object TimeScoreEvolutionMonth extends Query {
 
@@ -21,8 +22,21 @@ object TimeScoreEvolutionMonth extends Query {
       .getOrCreate()
     val context: SparkContext = spark.sparkContext
 
-    val file = context.textFile("C:\\progettoBigData\\progettoBigData\\Hotel_Reviews.csv")
+    //APPROCCIO DATAFRAME
+    /*
+    val file = spark.read.csv("C:\\progettoBigData\\progettoBigData\\Hotel_Reviews.csv")
 
+    val schema = file.schema
+
+    val interestedHotel = file.filter(row => row(4).toString.toLowerCase().equals(cast(0).toLowerCase()))
+      .groupBy("Review_Date").
+
+    interestedHotel.rdd.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")
+     */
+
+
+    //APPROCCIO RDD
+    val file = context.textFile("C:\\progettoBigData\\progettoBigData\\Hotel_Reviews.csv")
 
     //prendo solo le recensioni sull'hotel che mi interessano, mi prendo solo la data e il punteggio dell'utente
     val dataPunteggi = file.filter(item => {
@@ -42,7 +56,7 @@ object TimeScoreEvolutionMonth extends Query {
         (mese+"/"+giorno+"/"+anno, item.split(",")(1).toDouble)
       })
 
-    dataPunteggi.cache()
+    //dataPunteggi.cache()
 
     val dataPunteggioTotale = dataPunteggi.reduceByKey(_ + _)
 
@@ -60,5 +74,6 @@ object TimeScoreEvolutionMonth extends Query {
       })
 
     result.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")
+
   }
 }
