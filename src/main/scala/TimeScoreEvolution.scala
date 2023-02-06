@@ -1,5 +1,6 @@
 import org.apache.spark.SparkContext
 import org.apache.spark.sql.SparkSession
+import org.joda.time.DateTime
 
 object TimeScoreEvolution extends Query {
 
@@ -35,8 +36,6 @@ object TimeScoreEvolution extends Query {
         (data,punteggio.toDouble)
       })
 
-    //dataPunteggi.cache()
-
     val dataPunteggioTotale = dataPunteggi.reduceByKey(_ + _)
 
     val dataRecensioniTotali = dataPunteggi.map(item => (item._1, 1.0))
@@ -49,7 +48,7 @@ object TimeScoreEvolution extends Query {
         val mese = data.split("/")(0).toInt
         val giorno = data.split("/")(1).toInt
         val anno = data.split("/")(2).toInt
-        (anno * 365) + (mese * 30) + giorno //todo va bene? ora sì, con mese*31 non va bene
+        DateTime.parse(anno+"-"+mese+"-"+giorno+"T01:20").toCalendar(null)
       })
 
     result.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")

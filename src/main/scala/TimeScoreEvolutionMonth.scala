@@ -1,6 +1,8 @@
 import org.apache.avro.io.Encoder
 import org.apache.spark.SparkContext
 import org.apache.spark.sql.{Encoders, SparkSession}
+import org.joda.time.DateTime
+import org.joda.time.format.DateTimeFormatter
 
 object TimeScoreEvolutionMonth extends Query {
 
@@ -22,20 +24,6 @@ object TimeScoreEvolutionMonth extends Query {
       .getOrCreate()
     val context: SparkContext = spark.sparkContext
 
-    //APPROCCIO DATAFRAME
-    /*
-    val file = spark.read.csv("C:\\progettoBigData\\progettoBigData\\Hotel_Reviews.csv")
-
-    val schema = file.schema
-
-    val interestedHotel = file.filter(row => row(4).toString.toLowerCase().equals(cast(0).toLowerCase()))
-      .groupBy("Review_Date").
-
-    interestedHotel.rdd.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")
-     */
-
-
-    //APPROCCIO RDD
     val file = context.textFile("C:\\progettoBigData\\progettoBigData\\Hotel_Reviews.csv")
 
     //prendo solo le recensioni sull'hotel che mi interessano, mi prendo solo la data e il punteggio dell'utente
@@ -46,17 +34,15 @@ object TimeScoreEvolutionMonth extends Query {
         val splitted = item.split(",")
         val data = splitted(2)
         val punteggio = splitted(12)
-        data+","+punteggio
+        data + "," + punteggio
       })
       .map(item => {
         val data = item.split(",")(0).split(("/"))
         val giorno = "1" //placeholder, fisso il giorno uguale per tutti
         val mese = data(0)
         val anno = data(2)
-        (mese+"/"+giorno+"/"+anno, item.split(",")(1).toDouble)
+        (mese + "/" + giorno + "/" + anno, item.split(",")(1).toDouble)
       })
-
-    //dataPunteggi.cache()
 
     val dataPunteggioTotale = dataPunteggi.reduceByKey(_ + _)
 
@@ -70,7 +56,7 @@ object TimeScoreEvolutionMonth extends Query {
         val mese = data.split("/")(0).toInt
         val giorno = data.split("/")(1).toInt
         val anno = data.split("/")(2).toInt
-        (anno*365)+(mese*30)+giorno //todo va bene? ora sì, con mese*31 non va bene
+        DateTime.parse(anno+"-"+mese+"-"+giorno+"T01:20").toCalendar(null)
       })
 
     result.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result")
