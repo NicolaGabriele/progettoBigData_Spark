@@ -2,10 +2,13 @@ import org.apache.commons.text.StringTokenizer
 import org.apache.spark.SparkContext
 import org.apache.spark.ml.PipelineModel
 import org.apache.spark.mllib.classification.NaiveBayesModel
+import org.apache.spark.mllib.linalg.Vectors
+import org.apache.spark.mllib.regression.LabeledPoint
 import org.apache.spark.mllib.util.MLUtils
 import org.apache.spark.sql.SparkSession
 
 import java.io.{File, FileWriter}
+import java.lang.NumberFormatException
 
 object NaiveBayesian extends Query{
   def main(args: Array[String]): Unit = {
@@ -56,35 +59,30 @@ object NaiveBayesian extends Query{
     val nuovoDatiAgain = nuoviDati.drop("label_string", "text", "tokens", "token_features")
     nuovoDatiAgain.show()
 
+
     val rddNuoviDati = nuovoDatiAgain.rdd
 
-    //creazione del formato LIBSVM (serve per l'input del Naive Bayesian)
-    val inputNaive = rddNuoviDati.map(row => {
+    val labeledData = rddNuoviDati.map(row => {
       val parola = row.get(0).toString
       val split1 = parola.split("\\[")
       val indici = split1(1).split("]")(0)
       val frequenze = split1(2).split("]")(0)
       val splittedIndici = indici.split(",")
       val splittedFreq = frequenze.split(",")
-      var assegnazioni = ""
       var i = 0
+      val arr = Array.fill(13384)(0.0)
       while (i < splittedIndici.length) {
-        if (!splittedIndici(i).equals("")) {
-          assegnazioni = assegnazioni + (splittedIndici(i).toInt + 1).toString + ":" + splittedFreq(i) + " "
-        }
+          if (!splittedIndici(i).equals("")) {
+            arr(splittedIndici(i).toInt) = splittedFreq(i).toDouble
+          }
         i = i + 1
       }
-      0 + " " + assegnazioni + lastValue.toString + ":0.0" //assegno una label di prova (non serve), inoltre assegno anche l'ultima colonna con valore 0
+        LabeledPoint(0, Vectors.dense(arr))
     })
-
-
-    inputNaive.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\tmp\\tmpresult")
 
     val modelloBayes = NaiveBayesModel.load(context, "C:\\progettoBigData\\progettoBigData\\models\\bayesModel")
 
-    val importedInput = MLUtils.loadLibSVMFile(context, "C:\\progettoBigData\\progettoBigData\\tmp\\tmpresult\\part-00000")
-
-    val valorePredetto = importedInput.map(p => {
+    val valorePredetto = labeledData.map(p => {
       (modelloBayes.predict(p.features), modelloBayes.predictProbabilities(p.features))
     })
 
@@ -92,17 +90,8 @@ object NaiveBayesian extends Query{
 
     //eliminazione della recensione temporanea
     print(file.delete()+"\n")
-    //eliminazione formato LIBSVM temporaneo
-    val index  = new File("C:\\progettoBigData\\progettoBigData\\tmp\\tmpresult")
-    val entries = index.list
-    for (s <- entries) {
-      val currentFile = new File(index.getPath, s)
-      print(currentFile.delete()+"\n")
-    }
-    print(index.delete()+"\n")
 
     //todo possibile miglioramento con l'addestramento del naive bayesian
-    //todo aggiusta meglio directory di servizio per il naive bayes
 
   }
 }

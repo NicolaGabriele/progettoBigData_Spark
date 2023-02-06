@@ -35,7 +35,7 @@ object TimeScoreEvolution extends Query {
         (data,punteggio.toDouble)
       })
 
-    dataPunteggi.cache()
+    //dataPunteggi.cache()
 
     val dataPunteggioTotale = dataPunteggi.reduceByKey(_ + _)
 

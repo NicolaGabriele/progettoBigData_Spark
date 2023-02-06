@@ -1,8 +1,10 @@
 import org.apache.spark.SparkContext
-import org.apache.spark.ml.PipelineModel
-import org.apache.spark.mllib.classification.NaiveBayesModel
+import org.apache.spark.ml.{Pipeline, PipelineModel}
+import org.apache.spark.ml.feature.{CountVectorizer, RegexTokenizer, StringIndexer, VectorAssembler}
+import org.apache.spark.mllib.classification.{NaiveBayes, NaiveBayesModel}
 import org.apache.spark.mllib.util.MLUtils
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions.rand
 
 object SupportBayesian extends Query {
 
@@ -22,7 +24,6 @@ object SupportBayesian extends Query {
       .getOrCreate()
 
     val context: SparkContext = spark.sparkContext
-
 
     /*
 
@@ -45,26 +46,24 @@ object SupportBayesian extends Query {
 
     //preprocessing
 
-    //clean data and tokenize sentences using RegexTokenizer
     val regexTokenizer = new RegexTokenizer()
     regexTokenizer.setInputCol("text")
     regexTokenizer.setOutputCol("tokens")
     regexTokenizer.setPattern("\\W+")
 
-    val cv = new CountVectorizer() //vocabSize
+    val cv = new CountVectorizer()
     cv.setInputCol("tokens")
     cv.setOutputCol("token_features")
-    cv.setMinDF(2.0) //che cos'è?
+    cv.setMinDF(2.0)
 
-    val indexer = new StringIndexer() //(inputCol = "label_string", outputCol = "label")
+    val indexer = new StringIndexer()
     indexer.setInputCol("label_string")
     indexer.setOutputCol("label")
 
-    val vecAssembler = new VectorAssembler() //(inputCols =['token_features'], outputCol = "features"
+    val vecAssembler = new VectorAssembler()
     val arr = Array[String]{"token_features"}
     vecAssembler.setInputCols(arr)
     vecAssembler.setOutputCol("features")
-
 
     //costruzione della pipeline che serve per le nuove recensioni (regexTokenizer,countVectorizer,vectorAssembler)
     val stages = Array(regexTokenizer,cv,vecAssembler)
@@ -73,7 +72,6 @@ object SupportBayesian extends Query {
     val modelPipeline = pipeline.fit(dataframe)
     val data = modelPipeline.transform(dataframe)
 
-    //todo cosa succede se alcune parole non vengono trovate?
     modelPipeline.save("C:\\progettoBigData\\progettoBigData\\models\\pipelineModel")
 
 
@@ -110,11 +108,6 @@ object SupportBayesian extends Query {
 
 
 
-     */
-
-
-    /*
-
     val importedData = MLUtils.loadLibSVMFile(context, "C:\\progettoBigData\\progettoBigData\\nuovoDataset")
 
     val Array(training, test) = importedData.randomSplit(Array(0.7, 0.3),2023)
@@ -133,10 +126,6 @@ object SupportBayesian extends Query {
 
     //salvataggio del modello addestrato
     modelBayes.save(context,"C:\\progettoBigData\\progettoBigData\\models\\bayesModel")
-
-     */
-
-
 
 
     //prova predizioni richiamando i modelli salvati
@@ -193,6 +182,9 @@ object SupportBayesian extends Query {
 
     //todo sistema problema punteggiatura, viene creata una colonna _c1!
     //todo prova aggiungendo delle parole che non esistono
+
+
+     */
 
   }
 
