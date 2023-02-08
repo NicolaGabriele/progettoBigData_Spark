@@ -91,7 +91,6 @@ object NaiveBayesian extends Query{
     //eliminazione della recensione temporanea
     print(file.delete()+"\n")
 
-    //todo possibile miglioramento con l'addestramento del naive bayesian
 
   }
 }
