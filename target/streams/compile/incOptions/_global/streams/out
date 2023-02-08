@@ -1,17 +1,37 @@
 [debug] Created transactional ClassFileManager with tempDir = C:\progettoBigData\progettoBigData\target\scala-2.12\classes.bak
 [debug] About to delete class files:
 [debug] 	DemandingClientsPerNationality$.class
-[debug] 	DemandingClientsPerNationality.class
+[debug] 	NaiveBayesian.class
+[debug] 	TimeScoreEvolution$.class
+[debug] 	SupportBayesian$.class
 [debug] 	TimeScoreEvolutionMonth$.class
+[debug] 	SupportBayesian.class
+[debug] 	TimeScoreEvolution.class
 [debug] 	TimeScoreEvolutionMonth.class
+[debug] 	NaiveBayesian$.class
+[debug] 	DemandingClientsPerNationality.class
 [debug] We backup class files:
 [debug] 	DemandingClientsPerNationality$.class
-[debug] 	DemandingClientsPerNationality.class
+[debug] 	NaiveBayesian.class
+[debug] 	TimeScoreEvolution$.class
+[debug] 	SupportBayesian$.class
 [debug] 	TimeScoreEvolutionMonth$.class
+[debug] 	SupportBayesian.class
+[debug] 	TimeScoreEvolution.class
 [debug] 	TimeScoreEvolutionMonth.class
+[debug] 	NaiveBayesian$.class
+[debug] 	DemandingClientsPerNationality.class
 [debug] Registering generated classes:
-[debug] 	DemandingClientsPerNationality.class
 [debug] 	DemandingClientsPerNationality$.class
+[debug] 	NaiveBayesian.class
+[debug] 	TimeScoreEvolution$.class
+[debug] 	SupportBayesian$.class
 [debug] 	TimeScoreEvolutionMonth$.class
+[debug] 	WordCountNegNat$.class
+[debug] 	SupportBayesian.class
+[debug] 	WordCountNegNat.class
+[debug] 	TimeScoreEvolution.class
 [debug] 	TimeScoreEvolutionMonth.class
+[debug] 	NaiveBayesian$.class
+[debug] 	DemandingClientsPerNationality.class
 [debug] Removing the temporary directory used for backing up class files: C:\progettoBigData\progettoBigData\target\scala-2.12\classes.bak

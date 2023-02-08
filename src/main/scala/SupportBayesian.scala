@@ -25,7 +25,7 @@ object SupportBayesian extends Query {
 
     val context: SparkContext = spark.sparkContext
 
-    /*
+
 
     //preparazione del dataset
 
@@ -36,12 +36,12 @@ object SupportBayesian extends Query {
     .csv("naive_bayesian_dataset.txt")
     .withColumnRenamed("_c0", "label_string")
     .withColumnRenamed("_c1", "text")
+
     df.show()
 
     //shuffle e selezione di righe
     val shuffledDF = df.orderBy(rand())
     val dataframe = shuffledDF.limit(100000)
-    //todo possibilità di sbilanciamento delle classi? (credo di no)
 
 
     //preprocessing
@@ -126,65 +126,6 @@ object SupportBayesian extends Query {
 
     //salvataggio del modello addestrato
     modelBayes.save(context,"C:\\progettoBigData\\progettoBigData\\models\\bayesModel")
-
-
-    //prova predizioni richiamando i modelli salvati
-    val modelloPipeline = PipelineModel.load("C:\\progettoBigData\\progettoBigData\\models\\pipelineModel")
-    val lastValue = 13384
-    val recensioni_positive = 0
-    val recensioni_negative = 1
-
-    //todo: classe 0 e 1? qual è positiva e quale negativa?
-
-    val df = spark.read.option("header", "false")
-      .csv("provaRecensione")
-      .withColumnRenamed("_c0", "text")
-    df.show()
-
-    val nuoviDati = modelloPipeline.transform(df)
-
-    val nuovoDatiAgain = nuoviDati.drop("label_string", "text", "tokens", "token_features")
-    nuovoDatiAgain.show()
-
-    val rddNuoviDati = nuovoDatiAgain.rdd
-
-    //creazione del formato LIBSVM (serve per l'input del Naive Bayesian)
-    val inputNaive = rddNuoviDati.map(row => {
-      val parola = row.get(0).toString
-      val split1 = parola.split("\\[")
-      val indici = split1(1).split("]")(0)
-      val frequenze = split1(2).split("]")(0)
-      val splittedIndici = indici.split(",")
-      val splittedFreq = frequenze.split(",")
-      var assegnazioni = ""
-      var i = 0
-      while (i < splittedIndici.length) {
-        if (!splittedIndici(i).equals("")) {
-          assegnazioni = assegnazioni + (splittedIndici(i).toInt + 1).toString + ":" + splittedFreq(i) + " "
-        }
-        i = i + 1
-      }
-      0 + " " + assegnazioni + lastValue.toString+":0.0"//assegno una label di prova (non serve), inoltre assegno anche l'ultima colonna con valore 0
-    })
-
-
-    inputNaive.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result\\part-00000")
-
-    val modelloBayes = NaiveBayesModel.load(context,"C:\\progettoBigData\\progettoBigData\\models\\bayesModel")
-
-    val importedInput = MLUtils.loadLibSVMFile(context, "C:\\progettoBigData\\progettoBigData\\results\\result\\part-00000")
-
-    val valorePredetto = importedInput.map( p => {
-      (modelloBayes.predict(p.features),modelloBayes.predictProbabilities(p.features))
-    })
-
-    valorePredetto.saveAsTextFile("C:\\progettoBigData\\progettoBigData\\results\\result2")
-
-    //todo sistema problema punteggiatura, viene creata una colonna _c1!
-    //todo prova aggiungendo delle parole che non esistono
-
-
-     */
 
   }
 
